@@ -32,19 +32,37 @@ public class ConcatObservablesTest {
     private static final Observable<Integer> observable2_sync_no_timeout_completed = Observables.syncObservable(6, 10, duration1, duration1, true);
     private static final Observable<Integer> observable2_sync_no_timeout_no_completed = Observables.syncObservable(6, 10, duration1, duration1, false);
 
+    private static final Observable<Integer> observable1_async_timeout_completed = Observables.asyncObservable(1, 5, duration1, duration4, true);
+    private static final Observable<Integer> observable1_async_timeout_no_completed = Observables.asyncObservable(1, 5, duration1, duration4, false);
+    private static final Observable<Integer> observable1_async_no_timeout_completed = Observables.asyncObservable(1, 5, duration1, duration1, true);
+    private static final Observable<Integer> observable1_async_no_timeout_no_completed = Observables.asyncObservable(1, 5, duration1, duration1, false);
+
+    private static final Observable<Integer> observable2_async_timeout_completed = Observables.asyncObservable(6, 10, duration1, duration4, true);
+    private static final Observable<Integer> observable2_async_timeout_no_completed = Observables.asyncObservable(6, 10, duration1, duration4, false);
+    private static final Observable<Integer> observable2_async_no_timeout_completed = Observables.asyncObservable(6, 10, duration1, duration1, true);
+    private static final Observable<Integer> observable2_async_no_timeout_no_completed = Observables.asyncObservable(6, 10, duration1, duration1, false);
+
     @Parameterized.Parameters
     public static Collection<Object[]> parameters() {
         Collection<Object> observables1 = Arrays.asList(
             observable1_sync_timeout_completed,
             observable1_sync_timeout_no_completed,
             observable1_sync_no_timeout_completed,
-            observable1_sync_no_timeout_no_completed
+            observable1_sync_no_timeout_no_completed,
+            observable1_async_timeout_completed,
+            observable1_async_timeout_no_completed,
+            observable1_async_no_timeout_completed,
+            observable1_async_no_timeout_no_completed
         );
         Collection<Object> observables2 = Arrays.asList(
             observable2_sync_timeout_completed,
             observable2_sync_timeout_no_completed,
             observable2_sync_no_timeout_completed,
-            observable2_sync_no_timeout_no_completed
+            observable2_sync_no_timeout_no_completed,
+            observable2_async_timeout_completed,
+            observable2_async_timeout_no_completed,
+            observable2_async_no_timeout_completed,
+            observable2_async_no_timeout_no_completed
         );
         Collection<Object[]> observables = new ArrayList<>();
         for(Object observable1 : observables1) {
